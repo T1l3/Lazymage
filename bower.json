@@ -9,7 +9,7 @@
     ".*",
     "src",
     "node_modules",
-    "app/bower_components",
+    "bower_components",
     "test"
   ],
   "dependencies": {
