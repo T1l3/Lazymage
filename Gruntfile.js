@@ -10,6 +10,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-karma');
 
   grunt.initConfig({
+    bower: 'bower_components',
     meta: {
       banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
     },
