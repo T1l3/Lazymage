@@ -92,8 +92,9 @@ In your view:
 
 ## Author
 
-Thibault PIERRE - [@T1l3][1]
-[http://thibaultpierre.com][2]
+Thibault PIERRE - [@T1l3][1] [http://thibaultpierre.com][2]
+
+License MIT.
 
 
   [1]: http://twitter.com/T1l3
