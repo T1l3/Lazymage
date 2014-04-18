@@ -1,5 +1,7 @@
 # Lazymage
 
+[![Build Status](https://travis-ci.org/T1l3/Lazymage.svg?branch=master)](https://travis-ci.org/T1l3/Lazymage)
+
 > Angular directive to show a default image/loader while an image is loading. You can also add a default image if an error occured.
 
 ## Installation
