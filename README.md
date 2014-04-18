@@ -4,6 +4,8 @@
 
 > Angular directive to show a default image/loader while an image is loading. You can also add a default image if an error occured.
 
+You can fin a demo here: [http://codepen.io/T1l3/full/gapHw](http://codepen.io/T1l3/full/gapHw)
+
 ## Installation
 
 Include the script:
