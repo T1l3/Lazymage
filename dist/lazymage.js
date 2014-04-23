@@ -33,10 +33,13 @@ angular.module('lazymage')
     restrict: 'A',
     link: function postLink(scope, element, attrs) {
       // override lazymage options if some provided in lazymage-options attribute
+      var lazymageOptions = {};
+      angular.extend(lazymageOptions, lazymageRemote.globalOptions);
+
       if(angular.isDefined(attrs.lazymageOptions) && attrs.lazymageOptions) {
-        angular.extend(lazymageRemote.globalOptions, scope.$eval(attrs.lazymageOptions));
+        angular.extend(lazymageOptions, scope.$eval(attrs.lazymageOptions));
       }
-      var opts = lazymageRemote.globalOptions;
+
       var imageSrc = attrs.lazymage;
       var setImage = function(imageToAppend, attributes) {
         if(attributes === undefined) {
@@ -55,34 +58,34 @@ angular.module('lazymage')
         }
       };
 
-      if(opts.defaultImage.src || opts.loader) {
+      if(lazymageOptions.defaultImage.src || lazymageOptions.loader) {
         element.html('');
       }
 
-      if(opts.defaultImage.src) {
+      if(lazymageOptions.defaultImage.src) {
         var defaultImage = new Image();
-        defaultImage.src = opts.defaultImage.src;
+        defaultImage.src = lazymageOptions.defaultImage.src;
         var defaultImageToAppend = jQuery(defaultImage);
 
-        setImage(defaultImageToAppend, opts.defaultImage.attrs);
+        setImage(defaultImageToAppend, lazymageOptions.defaultImage.attrs);
       }
 
-      if(opts.loader) {
-        var loader = jQuery(opts.loader);
+      if(lazymageOptions.loader) {
+        var loader = jQuery(lazymageOptions.loader);
         element.append(loader);
       }
 
       var image = new Image();
 
       image.onload = function() {
-        setImage(jQuery(image), opts.currentImage.attrs);
+        setImage(jQuery(image), lazymageOptions.currentImage.attrs);
         removeLoaders();
       };
 
       image.onerror = function() {
-        if(opts.errorImage.src) {
-          image.src = opts.errorImage.src;
-          setImage(jQuery(image), opts.errorImage.attrs);
+        if(lazymageOptions.errorImage.src) {
+          image.src = lazymageOptions.errorImage.src;
+          setImage(jQuery(image), lazymageOptions.errorImage.attrs);
         }
         removeLoaders();
       };
