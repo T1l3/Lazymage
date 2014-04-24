@@ -4,13 +4,17 @@ describe('Directive: lazymage', function() {
   var image = 'http://upload.wikimedia.org/wikipedia/en/4/40/Octocat%2C_a_Mascot_of_Github.jpg';
   var timeout = 2000;
   var options = {
-    defaultImage: {
-      src: 'http://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/695px-AngularJS_logo.svg.png'
-    },
     errorImage: {
       src: 'http://upload.wikimedia.org/wikipedia/commons/c/ca/Crystal_error.png',
     },
-    loader: '<span>My custom preloader</span>'
+    defaultImage: {
+      src: 'http://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/695px-AngularJS_logo.svg.png',
+      removeTimeout: 0
+    },
+    loader: {
+      html: '<span>My custom preloader</span>',
+      removeTimeout: 0
+    }
   };
 
   beforeEach(module('lazymage'));

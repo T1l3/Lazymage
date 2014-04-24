@@ -23,13 +23,13 @@ angular.module('myApp', ['lazymage']);
 ### Lazymage
 
 ```html
-<div lazymage="{{item.image}}" class="image-wrapper"></div>
+<div lazymage="{{item.image}}"></div>
 ```
 
 or
 
 ```html
-<div lazymage="http://example.com/image.jpg" class="image-wrapper"></div>
+<div lazymage="http://example.com/image.jpg"></div>
 ```
 
 #### Options
@@ -52,30 +52,38 @@ angular.module('myApp', ['lazymage'])
 
 ```javascript
 lazymageRemoteProvider.globalOptions =  {
-    currentImage:{
-      attrs:{
+    currentImage: {
+      attrs: {
         class: 'img-responsive',
         custom_property: 'value'
       }
     },
-    defaultImage: {
-      src: 'path/to/image',
-      attrs:{}
-    },
     errorImage: {
       src: null,
-      attrs:{}
+      attrs: {}
     },
-    loader: '<span>Loading...</span>'
+    defaultImage: {
+      src: 'path/to/image',
+      attrs: {},
+      removeTimeout: 0
+    },
+    loader: {
+      html: '<span>Loading...</span>',
+      removeTimeout: 0
+    }
 };
 ```
+
 You can also use the `lazymage-options` attribute on the same element with the `lazymage` directive.
 
 In your controller:
 
 ```javascript
 $scope.lazymageOptions = {
-  loader: '<span>This loader overrides others</span>'
+  loader: {
+    html: '<span>This loader overrides others</span>',
+    removeTimeout: 0
+  }
 };
 ```
 
@@ -84,11 +92,6 @@ In your view:
 ```html
 <div lazymage="{{item.image}}" lazymage-options="lazymageOptions"></div>
 ```
-
-## Todos
-
-  - Add more controls on default image/loader (classes for css transition)
-  - Remove jQuery dependency
 
 ## Author
 
