@@ -4,7 +4,7 @@
 
 > Angular directive to show a default image/loader while an image is loading. You can also add a default image if an error occured.
 
-You can [http://htmlpreview.github.io/?https://github.com/T1l3/Lazymage/blob/master/examples/index.html](see the demo).
+You can [see the demo](http://htmlpreview.github.io/?https://github.com/T1l3/Lazymage/blob/master/examples/index.html).
 
 ## Installation
 
