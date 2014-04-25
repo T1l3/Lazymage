@@ -17,12 +17,10 @@ angular.module('lazymage')
     },
     defaultImage: {
       src: null,
-      attrs: {},
-      removeTimeout: 0
+      attrs: {}
     },
     loader: {
-      html:  '<span class="lazymage-loader">Preloading...</span>',
-      removeTimeout: 0
+      html:  '<span class="lazymage-loader">Preloading...</span>'
     }
   };
 
@@ -46,7 +44,7 @@ angular.module('lazymage')
     link: function postLink(scope, element, attrs) {
       element.addClass('lazymage-container');
 
-      // override lazymage options if some provided in lazymage-options attribute
+      // Override lazymage options if some provided in lazymage-options attribute
       var lazymageOptions = {};
       angular.extend(lazymageOptions, lazymageRemote.globalOptions);
 
@@ -54,26 +52,39 @@ angular.module('lazymage')
         angular.extend(lazymageOptions, scope.$eval(attrs.lazymageOptions));
       }
 
+      // Set default value to timeouts if undefined or null for simpler configuration
+      var timeouts = ['defaultImage', 'loader'];
+      angular.forEach(timeouts, function(value) {
+        if(lazymageOptions[value].removeTimeout === undefined || lazymageOptions[value].removeTimeout === null) {
+          lazymageOptions[value].removeTimeout = 0;
+        }
+      });
+
       var imageSrc = attrs.lazymage;
       var setImage = function(imageToAppend, attributes) {
         if(attributes === undefined) {
           attributes = {};
         }
         imageToAppend.attr(attributes);
-        element.append(imageToAppend);
+
+        // Timeout to prevent image to be shown before loaders when removeTimeout = 0
+        setTimeout(function() {
+          element.append(imageToAppend);
+        }, 0);
       };
+
       var removeLoaders = function() {
         if(defaultImageToAppend) {
-          if(!(lazymageOptions.defaultImage.removeTimeout === undefined || lazymageOptions.defaultImage.removeTimeout === null)) {
-            setTimeout(function(){
+          if(lazymageOptions.defaultImage.removeTimeout !== false) {
+            setTimeout(function() {
               defaultImageToAppend.remove();
             }, lazymageOptions.defaultImage.removeTimeout);
           }
         }
 
         if(loaderToAppend) {
-          if(!(lazymageOptions.loader.removeTimeout === undefined || lazymageOptions.loader.removeTimeout === null)) {
-            setTimeout(function(){
+          if(lazymageOptions.loader.removeTimeout !== false) {
+            setTimeout(function() {
               loaderToAppend.remove();
             }, lazymageOptions.loader.removeTimeout);
           }

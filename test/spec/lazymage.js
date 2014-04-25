@@ -8,12 +8,10 @@ describe('Directive: lazymage', function() {
       src: 'http://upload.wikimedia.org/wikipedia/commons/c/ca/Crystal_error.png',
     },
     defaultImage: {
-      src: 'http://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/695px-AngularJS_logo.svg.png',
-      removeTimeout: 0
+      src: 'http://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/695px-AngularJS_logo.svg.png'
     },
     loader: {
-      html: '<span>My custom preloader</span>',
-      removeTimeout: 0
+      html: '<span>My custom preloader</span>'
     }
   };
 
@@ -34,14 +32,20 @@ describe('Directive: lazymage', function() {
     $scope = _$rootScope_.$new();
   }));
 
-  it('should display a default image during image loading', function() {
+  it('should display a default image during image loading', function(done) {
     template = compileTemplate(image);
-    expect(template.html()).toMatch('<img src="' + options.defaultImage.src + '">');
+    setTimeout(function() {
+      expect(template.html()).toMatch('<img src="' + options.defaultImage.src + '">');
+      done();
+    }, 0);
   });
 
-  it('should display a loader during image loading', function() {
+  it('should display a loader during image loading', function(done) {
     template = compileTemplate(image);
-    expect(template.html()).toMatch(options.loader);
+    setTimeout(function() {
+      expect(template.html()).toMatch(options.loader);
+      done();
+    }, 0);
   });
 
   it('should display the real image when load is complete', function(done) {
