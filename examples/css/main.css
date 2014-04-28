@@ -10,14 +10,22 @@ html body {
   background: #fff;
 }
 
+.default-img {
+  float: left;
+}
+
+/* Soon new examples */
+.example1 .fadein, .example2 .fadein, .example4 .fadein {
+  position: absolute;
+}
+
 /* Loader from http://codepen.io/spevv/pen/fjxBi */
 .loader {
-  display: block;
   width: 30px;
   height: 30px;
   background-color: #333;
 
-  margin: 80px auto;
+  margin: 95px auto;
   -webkit-animation: rotateplane 1.2s infinite ease-in-out;
   animation: rotateplane 1.2s infinite ease-in-out;
 }
@@ -39,4 +47,29 @@ html body {
     transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
+}
+
+@-webkit-keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+@-moz-keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+@-webkit-keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@-moz-keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.fadein {
+  opacity: 0;
+  -webkit-animation: fadeIn ease-in 1;
+  animation: fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-duration: 2s;
+  animation-duration: 1s;
+
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+.lazymage-container {
+  position: relative;
 }
