@@ -15,7 +15,7 @@ html body {
 }
 
 /* Soon new examples */
-.example1 .fadein, .example2 .fadein, .example4 .fadein {
+.example1 .fadein, .example2 .fadein, .example3 .fadein {
   position: absolute;
 }
 
